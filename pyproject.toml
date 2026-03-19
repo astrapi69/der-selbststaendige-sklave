@@ -1,0 +1,38 @@
+[tool.poetry]
+package-mode = false
+
+[project]
+name = "write-book-template"
+version = "0.2.0"
+description = "Template project for writing and publishing books using markdown and automation tools"
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "manuscripta>=0.1.1,<1",
+    "manuscript-tools>=0.6.0,<1",
+]
+
+[[project.authors]]
+name = "Asterios Raptis"
+email = "asteri.raptis@gmail.com"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pandoc_batch]
+root = "manuscript"
+outdir = "output"
+to = "epub"
+metadata_file = "config/metadata.yaml"
+resource_path = ["assets"]
+lang = "en"
+jobs = 4
+verbose = true
+standalone = true
+test_only = false
+patch_md = true
+fix_inplace = false
+
+[tool.codespell]
+ignore-words-list = "prozess"
