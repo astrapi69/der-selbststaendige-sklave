@@ -1,0 +1,45 @@
+{
+  "project_name": "your_project_name",
+  "description": "Your description",
+  "author": "Asterios Raptis",
+  "language": "en",
+  "structure": {
+    "source_format": "Markdown",
+    "chapter_path": "manuscript/chapters/",
+    "assets_path": "assets/figures/",
+    "cover_file": "assets/covers/cover.png",
+    "image_prompt_file": "config/data/image_prompts.json"
+  },
+  "output_formats": [
+    "epub",
+    "epub2",
+    "pdf",
+    "docx",
+    "md"
+  ],
+  "image_generation": {
+    "engine": "Stable Diffusion / DALL-E / Midjourney",
+    "prompt_file": "config/data/image_prompts.json",
+    "target_path": "assets/figures/",
+    "style": "cinematic, sci-fi realism, moody lighting"
+  },
+  "tasks": [
+    {
+      "name": "Validate image prompts",
+      "description": "Check each chapter has a matching prompt."
+    },
+    {
+      "name": "Insert illustrations",
+      "description": "Add images to Markdown below the title."
+    },
+    {
+      "name": "Export final book",
+      "description": "Run `poetry run full-export`."
+    },
+    {
+      "name": "Translate",
+      "description": "Use DeepL / LM Studio for translations."
+    }
+  ],
+  "notes": "Cover is generated. Keep prompt-file mapping stable."
+}

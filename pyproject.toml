@@ -1,14 +1,11 @@
-[tool.poetry]
-package-mode = false
-
 [project]
-name = "write-book-template"
+name = "der-selbststaendige-sklave"
 version = "0.2.0"
-description = "Template project for writing and publishing books using markdown and automation tools"
+description = "Buchprojekt: Der selbstständige Sklave. Eine europäische Abrechnung. Warum repräsentative Demokratie ihre Bürger entmündigt. Persönlich, politisch, ohne Lösung."
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "manuscripta>=0.3.0,<1",
+    "manuscripta>=0.4.0,<1",
     "manuscript-tools>=0.6.0,<1",
 ]
 
@@ -17,15 +14,18 @@ name = "Asterios Raptis"
 email = "asteri.raptis@gmail.com"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = [ "poetry-core>=2.0.0,<3.0.0",]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
 
 [tool.pandoc_batch]
 root = "manuscript"
 outdir = "output"
 to = "epub"
 metadata_file = "config/metadata.yaml"
-resource_path = ["assets"]
+resource_path = [ "assets",]
 lang = "en"
 jobs = 4
 verbose = true
