@@ -1,16 +1,79 @@
 title: "Der selbstständige Sklave. Eine europäische Abrechnung"
 subtitle: ""
 author: "Asterios Raptis"
+# date: "2026"
+edition: "Erste Ausgabe"
+
+# Serie
+series:
+  title: "Das unsterbliche Muster"
+  volume: 5
+
+# Sprache
+lang: de-DE
+
+# Identifikation
+identifier: "https://consciouspath.pub/der-selbststaendige-sklave"
 isbn:
+  paperback: ""
+  hardcover: ""
+asin:
   ebook: ""
   paperback: ""
   hardcover: ""
-edition: "1"
-publisher: ""
-date: "2026"
-language: "de"
-description: "Buchprojekt: Der selbstständige Sklave. Eine europäische Abrechnung. Warum repräsentative Demokratie ihre Bürger entmündigt. Persönlich, politisch, ohne Lösung."
-keywords: []
+
+# Verlag
+publisher: "Conscious Path Publishing"
+publisher_city: "Thessaloniki"
+
+# Inhalt
+description: >-
+  Buchprojekt: Der selbstständige Sklave. Eine europäische Abrechnung. 
+  Warum repräsentative Demokratie ihre Bürger 
+  entmündigt. Persönlich, politisch, ohne Lösung.
+  
+
+# Kategorien & Stichwörter
+subject:
+  - Philosophie
+  - Bioethik
+  - Biotechnologie
+  - Politische Philosophie
+  - Ethik
+
+# KDP Kategorien (amazon.de, 3 Slots)
+categories:
+  ebook:
+    - ""
+    - ""
+    - ""
+  print:
+    - ""
+    - ""
+    - ""
+
+# KDP Keywords (7 Felder, max. 50 Zeichen pro Feld)
+# Regeln: keine Wiederholung von Titel/Untertitel/Kategorien,
+# verwandte Begriffe in einem Feld kombinieren,
+# jedes Wort wird einzeln indexiert
+keywords:
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+  - ""
+
+# Technik
 cover_image: "assets/covers/cover.png"
-output_formats: ["pdf", "epub", "docx"]
-kdp_enabled: false
+css:
+  - "config/styles.css"
+output_formats:
+  - pdf
+  - epub
+  - mobi
+  - docx
+
+# Rechte
+# rights: "© 2026 Asterios Raptis. Alle Rechte vorbehalten."

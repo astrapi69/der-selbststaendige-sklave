@@ -2,11 +2,16 @@
 # Section order is defined centrally in export-settings.yaml (section_order.audiobook)
 
 # Language code for TTS engine
-language: en
+language: de
 
 # Azure TTS voice identifier
 # See: https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support
-voice: en-US-JennyNeural
+voice: de-DE-KatjaNeural
+# voice: de-DE-ConradNeural
+# voice: de-AT-IngridNeural
+# voice: de-AT-JonasNeural
+# voice: de-CH-LeniNeural
+# voice: de-CH-JanNeural
 
 # Sections to skip during TTS processing
 # Matched against filenames without path and extension (case-insensitive)
