@@ -49,6 +49,18 @@ update: ## Update dependencies (including manuscripta)
 	@$(POETRY) update
 
 # ----------------------------------------------------------------------
+# chapter creation
+# ----------------------------------------------------------------------
+
+.PHONY: create-chapters create-next-chapter
+
+create-chapters: ##
+	@$(POETRY) run create-chapters $(ARGS)
+
+create-next-chapter: ##
+	@$(POETRY) run create-chapters --total 1
+
+# ----------------------------------------------------------------------
 # Project Initialization
 # ----------------------------------------------------------------------
 
