@@ -49,18 +49,6 @@ update: ## Update dependencies (including manuscripta)
 	@$(POETRY) update
 
 # ----------------------------------------------------------------------
-# chapter creation
-# ----------------------------------------------------------------------
-
-.PHONY: create-chapters create-next-chapter
-
-create-chapters: ##
-	@$(POETRY) run create-chapters $(ARGS)
-
-create-next-chapter: ##
-	@$(POETRY) run create-chapters --total 1
-
-# ----------------------------------------------------------------------
 # Project Initialization
 # ----------------------------------------------------------------------
 
@@ -70,6 +58,22 @@ init-bp: lock-install ## Initialize a new book project using the template
 	@$(POETRY) run init-bp $(ARGS)
 
 init-project: init-bp ## Alias: initialize a new project
+
+# ----------------------------------------------------------------------
+# Chapter Creation
+# ----------------------------------------------------------------------
+
+.PHONY: create-chapters create-next-chapter cc cnc
+
+create-chapters: ## Create multiple new chapter files
+	@$(POETRY) run create-chapters $(ARGS)
+
+create-next-chapter: ## Create the next chapter file
+	@$(POETRY) run create-chapters --total 1
+
+cc: create-chapters ## Alias: create-chapters
+
+cnc: create-next-chapter ## Alias: create-next-chapter
 
 # ----------------------------------------------------------------------
 # Book Export
@@ -91,19 +95,19 @@ export-all-nc: ## Export all formats WITHOUT cover
 
 # Frequently used export flows
 ebook: ## Export E-Book (EPUB)
-	@$(POETRY) run export-epub-safe $(ARGS)
+	@$(POETRY) run export-epub $(ARGS)
 
 ebook-copy: ## Export E-Book and copy EPUB to ~/Downloads (or EPUB_DEST)
 	@$(POETRY) run export-epub-safe --copy-epub-to $(or $(EPUB_DEST),~/Downloads) $(ARGS)
 
 paperback: ## Export print version (paperback)
-	@$(POETRY) run export-print-version-paperback-safe $(ARGS)
+	@$(POETRY) run export-print-version-paperback $(ARGS)
 
 paperback-copy: ## Export paperback and copy EPUB to ~/Downloads (or EPUB_DEST)
 	@$(POETRY) run export-print-version-paperback-safe --copy-epub-to $(or $(EPUB_DEST),~/Downloads) $(ARGS)
 
 hardcover: ## Export print version (hardcover)
-	@$(POETRY) run export-print-version-hardcover-safe $(ARGS)
+	@$(POETRY) run export-print-version-hardcover $(ARGS)
 
 hardcover-copy: ## Export hardcover and copy EPUB to ~/Downloads (or EPUB_DEST)
 	@$(POETRY) run export-print-version-hardcover-safe --copy-epub-to $(or $(EPUB_DEST),~/Downloads) $(ARGS)
@@ -133,7 +137,35 @@ audiobook: ## Generate audiobook from manuscript
 	@$(POETRY) run manuscripta-audiobook $(ARGS)
 
 # ----------------------------------------------------------------------
-# Translation
+# Safe/Draft Exports (skip image processing)
+# ----------------------------------------------------------------------
+
+.PHONY: ebook-safe pdf-safe docx-safe markdown-safe html-safe \
+        paperback-safe hardcover-safe
+
+ebook-safe: ## Quick draft EPUB (skip image steps)
+	@$(POETRY) run export-epub-safe $(ARGS)
+
+pdf-safe: ## Quick draft PDF (skip image steps)
+	@$(POETRY) run export-pdf-safe $(ARGS)
+
+docx-safe: ## Quick draft DOCX (skip image steps)
+	@$(POETRY) run export-docx-safe $(ARGS)
+
+markdown-safe: ## Quick draft Markdown (skip image steps)
+	@$(POETRY) run export-markdown-safe $(ARGS)
+
+html-safe: ## Quick draft HTML (skip image steps)
+	@$(POETRY) run export-html-safe $(ARGS)
+
+paperback-safe: ## Quick draft paperback (skip image steps)
+	@$(POETRY) run export-pvps $(ARGS)
+
+hardcover-safe: ## Quick draft hardcover (skip image steps)
+	@$(POETRY) run export-pvhs $(ARGS)
+
+# ----------------------------------------------------------------------
+# Translation (DeepL)
 # ----------------------------------------------------------------------
 
 .PHONY: translate-de-en translate-en-de translate-en-es translate-de-es
@@ -149,6 +181,49 @@ translate-en-es: ## Translate manuscript English -> Spanish (DeepL)
 
 translate-de-es: ## Translate manuscript German -> Spanish (DeepL)
 	@$(POETRY) run translate-de-es $(ARGS)
+
+# ----------------------------------------------------------------------
+# Translation (LMStudio - local)
+# ----------------------------------------------------------------------
+
+.PHONY: translate-lms translate-lms-en-de translate-lms-de-en \
+        translate-lms-en-es translate-lms-en-fr
+
+translate-lms: ## Translate manuscript via LMStudio
+	@$(POETRY) run translate-book-lmstudio $(ARGS)
+
+translate-lms-en-de: ## Translate English -> German (LMStudio)
+	@$(POETRY) run translate-book-en-de
+
+translate-lms-de-en: ## Translate German -> English (LMStudio)
+	@$(POETRY) run translate-book-de-en
+
+translate-lms-en-es: ## Translate English -> Spanish (LMStudio)
+	@$(POETRY) run translate-book-en-es
+
+translate-lms-en-fr: ## Translate English -> French (LMStudio)
+	@$(POETRY) run translate-book-en-fr
+
+# ----------------------------------------------------------------------
+# Markdown Cleanup (manuscripta tools)
+# ----------------------------------------------------------------------
+
+.PHONY: fix-quotes fix-quotes-dry unbold-headers replace-emojis fix-bullets
+
+fix-quotes: ## Fix German quotation marks in manuscript
+	@$(POETRY) run fix-german-quotes $(ARGS)
+
+fix-quotes-dry: ## Preview German quotation mark fixes
+	@$(POETRY) run fix-german-quotes --dry-run $(ARGS)
+
+unbold-headers: ## Remove bold markers from Markdown headers
+	@$(POETRY) run unbold-md-headers $(ARGS)
+
+replace-emojis: ## Replace emojis with text equivalents
+	@$(POETRY) run replace-emojis $(ARGS)
+
+fix-bullets: ## Fix broken Markdown bullet points
+	@$(POETRY) run replace-md-bullet-points $(ARGS)
 
 # ----------------------------------------------------------------------
 # Manuscript Tools (provided by manuscript-tools)
@@ -192,28 +267,6 @@ ms-validate-fix: ## Manuscript: full pipeline with auto-fix
 	@$(POETRY) run ms-validate $(MANUSCRIPT) --fix
 
 # ----------------------------------------------------------------------
-# Markdown Quality
-# ----------------------------------------------------------------------
-
-.PHONY: mdlint mdlint-fix codespell codespell-fix
-
-mdlint: ## Run markdownlint on all Markdown files
-	@if command -v npx >/dev/null 2>&1; then \
-		npx --yes markdownlint-cli@$(MDL_CLI_VER) "**/*.md"; \
-	else \
-		echo "markdownlint: npx not found - please install npm" >&2; \
-	fi
-
-mdlint-fix: ## Run markdownlint with auto-fix
-	@$(call _run_markdownlint_fix)
-
-codespell: ## Run codespell on manuscript
-	@$(POETRY) run codespell $(MANUSCRIPT) --ignore-words=$(CODESPELL_IGNORE)
-
-codespell-fix: ## Run codespell with auto-fix
-	@$(POETRY) run codespell $(MANUSCRIPT) --ignore-words=$(CODESPELL_IGNORE) --write-changes
-
-# ----------------------------------------------------------------------
 # Project Releases
 # ----------------------------------------------------------------------
 
@@ -240,7 +293,29 @@ clean-git-cache: ## Remove the git cache
 	@$(POETRY) run clean-git-cache $(ARGS)
 
 # ----------------------------------------------------------------------
-# Quality & Hooks
+# Markdown Quality (individual tools)
+# ----------------------------------------------------------------------
+
+.PHONY: mdlint mdlint-fix codespell codespell-fix
+
+mdlint: ## Run markdownlint on all Markdown files
+	@if command -v npx >/dev/null 2>&1; then \
+		npx --yes markdownlint-cli@$(MDL_CLI_VER) "**/*.md"; \
+	else \
+		echo "markdownlint: npx not found - please install npm" >&2; \
+	fi
+
+mdlint-fix: ## Run markdownlint with auto-fix
+	@$(call _run_markdownlint_fix)
+
+codespell: ## Run codespell on manuscript
+	@$(POETRY) run codespell $(MANUSCRIPT) --ignore-words=$(CODESPELL_IGNORE)
+
+codespell-fix: ## Run codespell with auto-fix
+	@$(POETRY) run codespell $(MANUSCRIPT) --ignore-words=$(CODESPELL_IGNORE) --write-changes
+
+# ----------------------------------------------------------------------
+# Quality & Hooks (combined)
 # ----------------------------------------------------------------------
 
 .PHONY: hooks fix lint precommit
@@ -248,17 +323,9 @@ clean-git-cache: ## Remove the git cache
 hooks: ## Install or refresh pre-commit hooks
 	@$(POETRY) run pre-commit install
 
-fix: ## Run all auto-fixes (markdownlint + codespell)
-	@$(call _run_markdownlint_fix)
-	@$(POETRY) run codespell $(MANUSCRIPT) --ignore-words=$(CODESPELL_IGNORE) --write-changes || true
+fix: mdlint-fix codespell-fix ## Run all auto-fixes (markdownlint + codespell)
 
-lint: ## Run all linters (markdownlint + codespell)
-	@if command -v npx >/dev/null 2>&1; then \
-		npx --yes markdownlint-cli@$(MDL_CLI_VER) "**/*.md"; \
-	else \
-		echo "markdownlint: npx not found - please install npm" >&2; \
-	fi
-	@$(POETRY) run codespell $(MANUSCRIPT) --ignore-words=$(CODESPELL_IGNORE)
+lint: mdlint codespell ## Run all linters (markdownlint + codespell)
 
 precommit: ## Run all pre-commit hooks
 	@$(POETRY) run pre-commit run -a
