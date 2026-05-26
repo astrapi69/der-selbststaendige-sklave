@@ -1,6 +1,6 @@
 # Teil 4: Was sich ändern muss
 
-## Kapitel 10: Was wir nicht brauchen
+# Kapitel 10: Was wir nicht brauchen
 
 Neun Kapitel Diagnose. Neun Kapitel lang wurde beschrieben, was kaputt ist. Der Staat nimmt und liefert nicht. Der
 Bürger bettelt, wo er bezahlen müsste. Das Eigentum gehört ihm nicht. Die Erlaubnis kommt vom Herrn. Die Vorschriften

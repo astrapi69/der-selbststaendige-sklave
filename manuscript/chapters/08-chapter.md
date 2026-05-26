@@ -1,4 +1,4 @@
-## Kapitel 8: Die Partei
+# Kapitel 8: Die Partei
 
 Im vorigen Kapitel ging es um die Wahl, das Ritual, das dem Bürger das Gefühl gibt, er habe gewählt. In diesem Kapitel
 geht es um die, die dabei gewählt werden: die Parteien. Und darum, wer sie sind, woher sie kommen, wer sie finanziert

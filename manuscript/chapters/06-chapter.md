@@ -1,4 +1,4 @@
-## Kapitel 6: Der gläserne Untertan und die unsichtbaren Herren
+# Kapitel 6: Der gläserne Untertan und die unsichtbaren Herren
 
 In jedem Herrschaftsverhältnis gibt es eine Asymmetrie der Sichtbarkeit. Der Herr sieht den Sklaven. Der Sklave sieht
 den Herrn nicht. Der Herr weiss, was der Sklave tut, was er besitzt, mit wem er spricht. Der Sklave darf nicht einmal

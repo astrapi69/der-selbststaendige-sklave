@@ -1,4 +1,4 @@
-## Kapitel 2: Der Bittsteller
+# Kapitel 2: Der Bittsteller
 
 Du hast anderthalb Millionen eingezahlt. Ein Leben lang. Und jetzt brauchst du etwas vom Staat. Nicht viel. Eine
 Pflegestufe für deine Mutter. Einen Platz in einer Einrichtung für dein Kind. Eine Bewilligung für eine Therapie, die

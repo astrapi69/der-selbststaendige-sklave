@@ -49,7 +49,7 @@ section_order:
     - back-matter/acknowledgments.md
     - back-matter/about-the-author.md
     - back-matter/bibliography.md
-    - back-matter/imprint.md
+    - back-matter/imprint-print.md
 
   # Falls back to paperback
   hardcover: null

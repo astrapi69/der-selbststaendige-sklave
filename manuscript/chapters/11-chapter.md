@@ -1,4 +1,4 @@
-## Kapitel 11: Souveränität
+# Kapitel 11: Souveränität
 
 Das vorige Kapitel hat aufgeräumt. Populismus, Revolution, Rückzug, neue Parteien. Alles Sackgassen. Was bleibt, ist ein
 Begriff, den ich nun zum Zentrum des letzten Kapitels mache: Souveränität.

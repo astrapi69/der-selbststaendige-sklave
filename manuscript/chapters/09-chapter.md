@@ -1,4 +1,4 @@
-## Kapitel 9: OXI
+# Kapitel 9: OXI
 
 Am 5. Juli 2015 tat das griechische Volk etwas, was in einer funktionierenden Demokratie selbstverständlich sein sollte.
 Es stimmte ab. Nicht über einen Abgeordneten. Nicht über eine Partei. Nicht über einen Koalitionsvertrag, den es ohnehin

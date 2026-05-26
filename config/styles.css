@@ -1,0 +1,260 @@
+/* ========================================
+   BOOK / EPUB STYLESHEET
+   - EPUB-safe (epubcheck-konform)
+   - KDP Print kompatibel
+   - Dark Mode Support
+   - Page-Break Hygiene
+   ======================================== */
+
+/* ======= Web Preview Container =======
+   Nur fuer Browser-Vorschau, EPUB-Reader ignoriert das. */
+.web-preview {
+    margin: 2em auto;
+    max-width: 700px;
+    padding: 0 1.2em;
+}
+
+/* ======= Base Typography ======= */
+body {
+    font-family: Georgia, serif;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #2c2c2c;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+p {
+    margin: 0 0 1em 0;
+    line-height: 1.6;
+}
+
+/* ======= Headings ======= */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "DejaVu Serif", "Noto Serif", Georgia, serif;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 1.5em 0 0.8em 0;
+    color: #000;
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+}
+
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.1em; }
+
+/* Prevent headings from being orphaned at page bottom */
+p + h2, p + h3, p + h4 {
+    page-break-before: avoid;
+    break-before: avoid;
+}
+
+/* ======= Lists ======= */
+ul, ol {
+    margin: 0.8em 0;
+    padding-left: 2em;
+}
+
+li > p {
+    margin-bottom: 0.6em;
+}
+
+li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* ======= Links ======= */
+a {
+    color: #1f3c88;
+    text-decoration: underline;
+}
+a:visited {
+    color: #663399;
+}
+
+/* ======= Blockquotes ======= */
+blockquote {
+    margin: 1em 1.5em;
+    padding: 0.5em 1em;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    font-style: italic;
+    color: #555555;
+}
+
+/* ======= Drop Cap ======= */
+p.dropcap::first-letter {
+    float: left;
+    font-size: 2.8em;
+    line-height: 1;
+    padding-right: 0.1em;
+    padding-left: 0.02em;
+    font-weight: bold;
+}
+
+/* ======= Figures, Images & Captions ======= */
+
+/* Base: all figures centered, no page breaks through images */
+figure {
+    display: block;
+    text-align: center;
+    margin: 1.2em auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* Base: all images centered, responsive */
+figure img,
+p img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    clear: both;
+}
+
+/* Logo: klein und zentriert */
+figure.logo {
+    margin: 0.5em auto;
+}
+figure.logo img {
+    max-width: 30%;
+}
+
+/* Diagramme: etwas Abstand zum Rand */
+figure.diagram {
+    margin: 1.5em auto;
+}
+figure.diagram img {
+    max-width: 90%;
+}
+
+/* Captions */
+figcaption {
+    color: #333333;
+    font-size: 0.9em;
+    line-height: 1.4;
+    font-weight: 500;
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    page-break-before: avoid;
+    break-before: avoid;
+}
+
+/* ======= Tables ======= */
+table {
+    margin: 1em auto;
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: avoid;
+}
+th, td {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+}
+
+/* ======= TOC (toc-table Variante) ======= */
+.toc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    page-break-inside: avoid;
+}
+
+.toc-table td {
+    padding: 0.5em 0;
+    border: none;
+    vertical-align: baseline;
+}
+
+.toc-table td:first-child {
+    width: auto;
+    padding-right: 1em;
+}
+
+.toc-table td:last-child {
+    width: 3em;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.toc-table h1 {
+    margin-bottom: 1em;
+}
+
+/* ======= Utility ======= */
+.page-break {
+    page-break-before: always;
+    break-before: page;
+}
+
+/* ======= Dark Mode (Apple Books, Thorium, Kobo) ======= */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+    p, li, td, th {
+        color: #e0e0e0;
+    }
+    blockquote {
+        background-color: #2a2a2a;
+        border-left-color: #888;
+        color: #cccccc;
+    }
+    table {
+        border-color: #555;
+    }
+    th {
+        background-color: #333;
+    }
+    a {
+        color: #6eceda;
+    }
+    a:visited {
+        color: #c792ea;
+    }
+    figcaption {
+        color: #bbbbbb;
+        font-weight: 400;
+    }
+    /* Diagramme haben weissen SVG-Hintergrund,
+       dezenter Rahmen verhindert grelle Bloecke */
+    figure.diagram img {
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* ======= Print / PDF ======= */
+@media print {
+    figure, img, figcaption {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    h2, h3 {
+        page-break-after: avoid;
+    }
+    .toc-table {
+        page-break-before: always;
+        page-break-after: always;
+    }
+}

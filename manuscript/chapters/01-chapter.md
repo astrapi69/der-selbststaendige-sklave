@@ -1,6 +1,6 @@
 # Teil 1: Was dir gehört
 
-## Kapitel 1: Die anderthalb Millionen
+# Kapitel 1: Die anderthalb Millionen
 
 Stell dir vor, du stehst morgens auf, fährst zur Arbeit, arbeitest acht Stunden, fährst nach Hause. Fünf Tage die Woche.
 Elf Monate im Jahr. Fünfundvierzig Jahre lang. Am Ende dieses Arbeitslebens hat der Staat dir anderthalb Millionen Euro

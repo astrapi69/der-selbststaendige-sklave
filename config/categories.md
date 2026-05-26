@@ -28,3 +28,8 @@ Gib im Suchfeld der Kategorieauswahl diese Begriffe ein und wähl die passendste
 
 Falls keine dieser Unterkategorien exakt so auftaucht, sag mir, welche Optionen dir das Interface unter "Politik" und "
 Wirtschaft" anzeigt, dann pick ich die beste Kombination daraus.
+
+# Die aktuellen Kategorien Ihres Titels(ebook)
+- Kindle-Bücher › Politik & Geschichte › Politikwissenschaft ↗
+- Kindle-Bücher › Politik & Geschichte › Politik nach Bereichen › Sozialpolitik ↗
+- Kindle-Bücher › Politik & Geschichte › Gesellschaft › Gesellschaftskritik ↗

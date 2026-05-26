@@ -1,4 +1,4 @@
-## Kapitel 5: Die Vorschrift
+# Kapitel 5: Die Vorschrift
 
 Im vorigen Kapitel ging es um Genehmigungen. Du musst fragen, bevor du handelst. In diesem Kapitel geht es um etwas
 Tieferes: Der Staat sagt dir nicht nur, ob du handeln darfst. Er sagt dir, wie.

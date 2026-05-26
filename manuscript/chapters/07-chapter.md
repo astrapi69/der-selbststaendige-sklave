@@ -1,6 +1,6 @@
 # Teil 3: Was du wählen darfst
 
-## Kapitel 7: Das Kreuz
+# Kapitel 7: Das Kreuz
 
 Alle vier Jahre, manchmal alle fünf, bekommst du einen Brief. Einen Wahlzettel. Du gehst in eine Kabine, machst ein
 Kreuz, faltest das Papier, wirfst es in eine Urne. Das ist deine demokratische Beteiligung. Das ist dein Anteil an der

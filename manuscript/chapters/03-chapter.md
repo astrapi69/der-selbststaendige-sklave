@@ -1,4 +1,4 @@
-## Kapitel 3: Das Eigentum, das keines ist
+# Kapitel 3: Das Eigentum, das keines ist
 
 Du hast dein ganzes Leben gearbeitet. Du hast anderthalb Millionen an den Staat abgeführt. Von dem, was übrig blieb,
 hast du gespart. Jahrelang. Du hast auf Urlaube verzichtet, auf das grössere Auto, auf das schönere Restaurant. Du hast

@@ -1,6 +1,6 @@
 # Teil 2: Was du darfst
 
-## Kapitel 4: Der Erlaubnisschein
+# Kapitel 4: Der Erlaubnisschein
 
 Du bist ein freier Bürger. Das steht im Grundgesetz. Du darfst deinen Beruf frei wählen. Du darfst ein Gewerbe gründen.
 Du darfst bauen, handeln, reisen, arbeiten. Du darfst alles.
